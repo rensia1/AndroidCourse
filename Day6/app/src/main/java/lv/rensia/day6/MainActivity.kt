@@ -21,9 +21,30 @@ class MainActivity : AppCompatActivity() {
         val btnPlus = findViewById<Button>(R.id.btnPlus)
 
 
+        var reverse = false
         btnPlus.setOnClickListener{
             clickCountVar = clickCount.text.toString().toInt()
-            clickCount.text = (clickCountVar + 1).toString()
+
+            if(clickCountVar == 10) {
+                reverse = true
+            } else if (clickCountVar == 0) {
+                reverse = false
+            }
+            if (reverse == true) {
+                clickCount.text = (clickCountVar - 1).toString()
+            } else {
+                clickCount.text = (clickCountVar + 1).toString()
+            }
+
+
+//            if(clickCountVar < 10 && clickCountVar > -1) {
+//                clickCount.text = (clickCountVar + 1).toString()
+//            } else {
+//                clickCount.text = (clickCountVar - 1).toString()
+//            }
+
+
+
         }
 
 
