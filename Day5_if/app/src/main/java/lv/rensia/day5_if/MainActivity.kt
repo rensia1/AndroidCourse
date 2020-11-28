@@ -8,6 +8,11 @@ import android.widget.EditText
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
+    var previousValue :String = ""
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -16,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         val btnShowCurrent = findViewById<Button>(R.id.btnShowCurrent)
         val btnShowPrevious = findViewById<Button>(R.id.btnShowPrevious)
 
-        var previousValue :String = ""
         var currentValue: String
 
         previousValue = editText.text.toString()
