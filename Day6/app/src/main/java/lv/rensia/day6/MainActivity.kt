@@ -19,15 +19,20 @@ class MainActivity : AppCompatActivity() {
         val btnGuess = findViewById<Button>(R.id.btnGuess)
         //val stringToGuess = "Programmetajs"
         var guessCount = 0
+        var stringToGuess :String = ""
 
-
-
-
+        var player = 1
         btnGuess.setOnClickListener{
-            guessCount ++
-            val stringToGuess = findViewById<EditText>(R.id.wordToGuess).text.toString()
-            val word = findViewById<EditText>(R.id.guessedWord).text.toString()
 
+            var word :String = ""
+
+            if (player == 1) {
+                stringToGuess = findViewById<EditText>(R.id.wordToGuess).text.toString()
+                player = 2
+            } else {
+                word = findViewById<EditText>(R.id.wordToGuess).text.toString()
+                guessCount ++
+            }
 
 
             if(stringToGuess != word  && guessCount == 5) {
