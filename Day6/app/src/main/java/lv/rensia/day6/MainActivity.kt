@@ -2,46 +2,41 @@ package lv.rensia.day6
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-
-
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
 
-    var clickCountVar :Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val clickCount = findViewById<TextView>(R.id.lblCount)
-        val btnPlus = findViewById<Button>(R.id.btnPlus)
+
+        val btnGuess = findViewById<Button>(R.id.btnGuess)
+        //val stringToGuess = "Programmetajs"
+        var guessCount = 0
 
 
-        var reverse = false
-        btnPlus.setOnClickListener{
-            clickCountVar = clickCount.text.toString().toInt()
 
-            if(clickCountVar == 10) {
-                reverse = true
-            } else if (clickCountVar == 0) {
-                reverse = false
+
+        btnGuess.setOnClickListener{
+            guessCount ++
+            val stringToGuess = findViewById<EditText>(R.id.wordToGuess).text.toString()
+            val word = findViewById<EditText>(R.id.guessedWord).text.toString()
+
+
+
+            if(stringToGuess != word  && guessCount == 5) {
+                Toast.makeText(this,"Sorry, you lost ):", Toast.LENGTH_SHORT).show()
+                guessCount = 0
+            } else if(stringToGuess.toLowerCase() == word.toLowerCase()) {
+                Toast.makeText(this,"Yay, you won :)", Toast.LENGTH_SHORT).show()
+                guessCount = 0
             }
-            if (reverse == true) {
-                clickCount.text = (clickCountVar - 1).toString()
-            } else {
-                clickCount.text = (clickCountVar + 1).toString()
-            }
-
-
-//            if(clickCountVar < 10 && clickCountVar > -1) {
-//                clickCount.text = (clickCountVar + 1).toString()
-//            } else {
-//                clickCount.text = (clickCountVar - 1).toString()
-//            }
 
 
 
