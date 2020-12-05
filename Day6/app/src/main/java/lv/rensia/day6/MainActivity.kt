@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
             if (player == 1) {
                 stringToGuess = findViewById<EditText>(R.id.wordToGuess).text.toString()
                 player = 2
+                findViewById<EditText>(R.id.wordToGuess).text.clear()
             } else {
                 word = findViewById<EditText>(R.id.wordToGuess).text.toString()
                 guessCount ++
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
             } else if(stringToGuess.toLowerCase() == word.toLowerCase()) {
                 Toast.makeText(this,"Yay, you won :)", Toast.LENGTH_SHORT).show()
                 guessCount = 0
+                player = 1
+                findViewById<EditText>(R.id.wordToGuess).text.clear()
             }
 
 
