@@ -27,15 +27,15 @@ class MainActivity : AppCompatActivity() {
         val lblDice = findViewById<TextView>(R.id.lblDice)
         lblDice.text = ""
         val diceCount = findViewById<EditText>(R.id.diceCount)
-        var diceCountF : Int = 0
+        var numberOfDices : Int = 0
 
         if(diceCount.text.isEmpty()) {
             Toast.makeText(this, "can't be empty", Toast.LENGTH_SHORT).show()
         }else if(diceCount.text.toString().toInt() > 4) {
             Toast.makeText(this, "Please enter a value between 1 and 4", Toast.LENGTH_SHORT).show()
-        } else {
-            diceCountF = diceCount.text.toString().toInt()
-            for (i in 1..diceCountF) {
+        }else {
+            numberOfDices = diceCount.text.toString().toInt()
+            for (i in 1..numberOfDices) {
                 var diceResult: Int = (1..6).random()
                 lblDice.text = lblDice.text.toString() + diceResult.toString() + " "
             }
