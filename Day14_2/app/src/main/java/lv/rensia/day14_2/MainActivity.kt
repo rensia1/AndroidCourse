@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
         var list = mutableListOf<Int>()
 
         btnAdd.setOnClickListener {
-            val etFirstNumber = findViewById<EditText>(R.id.etFirstNumber).text.toString().toInt()
-            list.add(etFirstNumber)
-
+            val etFirstNumber = findViewById<EditText>(R.id.etFirstNumber)
+            list.add(etFirstNumber.text.toString().toInt())
+            etFirstNumber.text.clear()
         }
 
         btnShowResult.setOnClickListener {
