@@ -18,26 +18,41 @@ class MainActivity : AppCompatActivity() {
 
         val btnAdd = findViewById<Button>(R.id.btnAdd)
         val btnShow = findViewById<Button>(R.id.btnShow)
+        val btnDelete = findViewById<Button>(R.id.btnDelete)
+
+
+
 
         var lst = mutableListOf<Student>()
         btnAdd.setOnClickListener {
-            val etName = findViewById<EditText>(R.id.etName)
-            val etSurname = findViewById<EditText>(R.id.etSurname)
-            val etCourse = findViewById<EditText>(R.id.etCourse)
-            lst.add(Student(etName.text.toString(), etSurname.text.toString(), etCourse.text.toString().toInt()))
+            val etName = findViewById<EditText>(R.id.etName).text.toString()
+            val etSurname = findViewById<EditText>(R.id.etSurname).text.toString()
+            val etCourse = findViewById<EditText>(R.id.etCourse).text.toString().toInt()
+            lst.add(Student(etName, etSurname, etCourse))
+
 
         }
 
         btnShow.setOnClickListener {
-            val etIndex = findViewById<EditText>(R.id.etIndex)
             val tvShowStudent = findViewById<TextView>(R.id.tvShowStudent)
+            val index = findViewById<EditText>(R.id.etIndex).text.toString().toInt()
 
-            if(etIndex.text.toString().toInt() < lst.size ) {
-                tvShowStudent.text = lst[etIndex.text.toString().toInt()].name
+            if(index < lst.size ) {
+                tvShowStudent.text = lst[index].name
             }else {
                 Toast.makeText(this, "There are no elements with that index", Toast.LENGTH_SHORT).show()
             }
 
+        }
+
+        btnDelete.setOnClickListener {
+            val index = findViewById<EditText>(R.id.etIndex).text.toString().toInt()
+            if(index < lst.size) {
+                lst.removeAt(index)
+                Toast.makeText(this, "Removed", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "No such element", Toast.LENGTH_SHORT).show()
+            }
         }
 
 //        btnDemo.setOnClickListener{
