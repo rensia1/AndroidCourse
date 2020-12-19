@@ -5,6 +5,8 @@ import android.widget.TextView
 
 class Results {
 
+    var diceCount: Int = 1
+
     fun getResult(lbl: TextView, editDiceCount: EditText): Int{
 
 
@@ -12,7 +14,7 @@ class Results {
 
         if(editDiceCount.toString().length > 0){
 
-            var diceCount = editDiceCount.text.toString().toInt()
+            diceCount = editDiceCount.text.toString().toInt()
             val gen = NumberGen()
 
 
@@ -33,6 +35,8 @@ class Results {
             }
 
         }
+
+        editDiceCount.text =
 
         return result //seit vajag atgriezt skaitlu summu- so rindinu ir jamaina obligati
         //jaatgriez masiva garums
