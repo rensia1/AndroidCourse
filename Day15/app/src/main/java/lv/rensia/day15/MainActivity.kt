@@ -9,6 +9,7 @@ import android.widget.Toast
 //import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    var lst = mutableListOf<Student>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,20 +22,21 @@ class MainActivity : AppCompatActivity() {
         val btnDelete = findViewById<Button>(R.id.btnDelete)
         val btnLottery = findViewById<Button>(R.id.btnLottery)
 
-
-        var lst = mutableListOf<Student>()
-
         btnLottery.setOnClickListener {
             var winner = (0..lst.size-1).random()
             lst[winner].name
+            lst[winner].winCount++
             Toast.makeText(this, "The winner is " +  lst[winner].name + " " + lst[winner].lastName, Toast.LENGTH_SHORT).show()
+            if(lst[winner].winCount == 3 ) {
+                Toast.makeText(this, "Won 3 times " +  lst[winner].name + " " + lst[winner].lastName, Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnAdd.setOnClickListener {
             val etName = findViewById<EditText>(R.id.etName).text.toString()
             val etSurname = findViewById<EditText>(R.id.etSurname).text.toString()
             val etCourse = findViewById<EditText>(R.id.etCourse).text.toString().toInt()
-            lst.add(Student(etName, etSurname, etCourse))
+            lst.add(Student(etName, etSurname, etCourse, 0))
             Toast.makeText(this, "Added new student " + etName + " " + etSurname, Toast.LENGTH_SHORT).show()
 
 
