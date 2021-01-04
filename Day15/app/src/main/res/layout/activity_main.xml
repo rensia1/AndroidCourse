@@ -77,9 +77,9 @@
         android:id="@+id/tvShowStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student"
         app:layout_constraintBottom_toTopOf="@+id/etIndex"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -91,4 +91,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnShow"
         app:layout_constraintTop_toBottomOf="@+id/etIndex" />
+
+    <Button
+        android:id="@+id/btnLottery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lottery"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowStudent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
 </androidx.constraintlayout.widget.ConstraintLayout>

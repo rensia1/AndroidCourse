@@ -19,16 +19,23 @@ class MainActivity : AppCompatActivity() {
         val btnAdd = findViewById<Button>(R.id.btnAdd)
         val btnShow = findViewById<Button>(R.id.btnShow)
         val btnDelete = findViewById<Button>(R.id.btnDelete)
-
-
+        val btnLottery = findViewById<Button>(R.id.btnLottery)
 
 
         var lst = mutableListOf<Student>()
+
+        btnLottery.setOnClickListener {
+            var winner = (0..lst.size-1).random()
+            lst[winner].name
+            Toast.makeText(this, "The winner is " +  lst[winner].name + " " + lst[winner].lastName, Toast.LENGTH_SHORT).show()
+        }
+
         btnAdd.setOnClickListener {
             val etName = findViewById<EditText>(R.id.etName).text.toString()
             val etSurname = findViewById<EditText>(R.id.etSurname).text.toString()
             val etCourse = findViewById<EditText>(R.id.etCourse).text.toString().toInt()
             lst.add(Student(etName, etSurname, etCourse))
+            Toast.makeText(this, "Added new student " + etName + " " + etSurname, Toast.LENGTH_SHORT).show()
 
 
         }
